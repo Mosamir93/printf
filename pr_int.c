@@ -12,7 +12,7 @@ int pr_int(va_list args, t_flag *fl)
 	int i, num, x, y;
 	char s[20] = {0};
 
-	x = va_arg(args,long int);
+	x = va_arg(args, long int);
 	num = 0;
 
 	if (x == 0)
@@ -54,23 +54,16 @@ int pr_int(va_list args, t_flag *fl)
 
 int pr_rev(va_list args, t_flag *fl)
 {
-	int i, j, num;
+	int i, num;
 	char *s;
-	char temp;
 
 	(void)fl;
 	num = 0;
 	s = va_arg(args, char *);
 	i = _strlen(s);
 
-	for (j = i - 1; j >= i / 2; j--)
-	{
-		temp = s[j];
-		s[j] = s[(i - 1) - j];
-		s[(i - 1) - j] = temp;
-	}
-	for (j = 0; s[j]; j++)
-		num += parse_char(s[j]);
+	for (; i >= 0; i--)
+		num += parse_char(s[i]);
 	return (num);
 }
 
@@ -84,7 +77,36 @@ int _strlen(char *s)
 {
 	int i;
 
-	for (i = 0; s[i] != '\0'; i++)
-		;
+	while (s[i])
+		i++
 	return (i);
+}
+
+/**
+ * pr_binary - prints binary of an unsigned int
+ * @args: va_list to get the unsigned int from
+ * @fl: unused flag argument
+ * Return: number of elements parsed to the buffer
+*/
+int pr_binary(va_list args, t_flag *fl)
+{
+	unsigned int x = va_arg(args, unsigned int);
+	int i, index = 0;
+	int binary[64];
+
+	void(fl);
+
+	if (x == 0)
+	{
+		parse_char('0');
+		return (1);
+	}
+	while (x > 0)
+	{	binary[index++] = x % 2;
+		x /= 2;
+	}
+	for (i = index - 1; i >= 0; i--)
+	{	parse_char(binary[i]);
+		return (index);
+	}
 }
