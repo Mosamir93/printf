@@ -56,15 +56,15 @@ int pr_rev(va_list args, t_flag *fl)
 {
 	int i;
 	unsigned int num;
-	char *s;
+	char *str;
 
 	(void)fl;
 	num = 0;
-	s = va_arg(args, char *);
-	i = _strlen(s);
+	str = va_arg(args, char *);
+	i = _strlen(str);
 
 	for (; i >= 0; i--)
-		num += parse_char(s[i]);
+		num += parse_char(str[i]);
 	return (num);
 }
 
