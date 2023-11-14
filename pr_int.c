@@ -41,7 +41,8 @@ int pr_int(va_list args, t_flag *fl)
 	}
 	for (i = 0; i < j; i++)
 	{
-		num += parse_char(s[i]);
+		num++;
+		parse_char(s[i]);
 	}
 	return (num);
 
