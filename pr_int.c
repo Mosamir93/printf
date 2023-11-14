@@ -9,8 +9,8 @@
 
 int pr_int(va_list args, t_flag *fl)
 {
-	int i, num, y;
-	long int x;
+	int i, num;
+	long int x, y;
 	char s[40] = {0};
 
 	x = va_arg(args, long int);
