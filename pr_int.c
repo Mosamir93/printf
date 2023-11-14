@@ -76,7 +76,7 @@ int pr_rev(va_list args, t_flag *fl)
 
 int _strlen(char *s)
 {
-	int i;
+	int i = 0;
 
 	while (s[i])
 		i++;
