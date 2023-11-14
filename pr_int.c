@@ -130,16 +130,23 @@ int pr_rot13(va_list args, t_flag *fl)
 {
 	int i, count = 0;
 	char *str = va_arg(args, char *);
+	char *rot;
 
+	rot = malloc((_strlen(str) * sizeof(char)) + 1);
+	if (rot == NULL)
+		return (-1);
 	(void)fl;
 	if (!str)
 		return (0);
 	for (i = 0; str[i]; i++)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
-			count += parse_char(((str[i] - 'a' + 13) % 26) + 'a');
+			rot[i] = (((str[i] - 'a' + 13) % 26) + 'a');
 		else if (str[i] >= 'A' && str[i] <= 'Z')
-			count += parse_char(((str[i] - 'A' + 13) % 26) + 'A');
+			rot[i] = (((str[i] - 'A' + 13) % 26) + 'A');
 	}
+	for (i = 0; rot[i]; i++)
+		count += parse_char(rot[i]);
+	free(rot);
 	return (count);
 }
