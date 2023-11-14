@@ -78,7 +78,7 @@ int _strlen(char *s)
 	int i;
 
 	while (s[i])
-		i++
+		i++;
 	return (i);
 }
 
@@ -94,7 +94,7 @@ int pr_binary(va_list args, t_flag *fl)
 	int i, index = 0;
 	int binary[64];
 
-	void(fl);
+	(void)fl;
 
 	if (x == 0)
 	{
@@ -106,7 +106,6 @@ int pr_binary(va_list args, t_flag *fl)
 		x /= 2;
 	}
 	for (i = index - 1; i >= 0; i--)
-	{	parse_char(binary[i]);
-		return (index);
-	}
+		parse_char(binary[i]);
+	return (index);
 }
