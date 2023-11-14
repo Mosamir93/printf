@@ -54,8 +54,8 @@ int pr_int(va_list args, t_flag *fl)
 
 int pr_rev(va_list args, t_flag *fl)
 {
-	static int i;
-	int num;
+	int i;
+	unsigned int num;
 	char *s;
 
 	(void)fl;
@@ -76,7 +76,7 @@ int pr_rev(va_list args, t_flag *fl)
 
 int _strlen(char *s)
 {
-	int i = 0;
+	unsigned int i = 0;
 
 	while (s[i])
 		i++;
