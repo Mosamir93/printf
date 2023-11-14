@@ -102,7 +102,7 @@ int pr_binary(va_list args, t_flag *fl)
 		return (1);
 	}
 	if (x < 0)
-	{	x = -x
+	{	x = -x;
 		count += parse_char('1');
 	}
 	while (x > 0)
