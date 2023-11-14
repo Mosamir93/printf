@@ -10,10 +10,10 @@
 int pr_int(va_list args, t_flag *fl)
 {
 	int i, num, y;
-	long int x;
+	int x;
 	char s[20] = {0};
 
-	x = va_arg(args, long int);
+	x = va_arg(args, int);
 	num = 0;
 
 	if (x == 0)
