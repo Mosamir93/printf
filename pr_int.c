@@ -9,7 +9,8 @@
 
 int pr_int(va_list args, t_flag *fl)
 {
-	int i, num, x, y;
+	int i, num, y;
+	long int x;
 	char s[20] = {0};
 
 	x = va_arg(args, long int);
@@ -27,7 +28,7 @@ int pr_int(va_list args, t_flag *fl)
 	if (x < 0)
 	{
 		num += parse_char('-');
-		x = (-1) * x;
+		x = -x;
 	}
 	y = x;
 	for (i = 0; x > 0; i++)
