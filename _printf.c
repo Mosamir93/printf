@@ -34,7 +34,7 @@ int pr_str(va_list args, t_flag *fl)
 	str = va_arg(args, char *);
 	if (!str)
 		str = "(null)";
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		x += parse_char(str[i]);
 		i++;
