@@ -9,7 +9,7 @@
 
 int pr_int(va_list args, t_flag *fl)
 {
-	int i, num;
+	int i, j, num;
 	int x, y;
 	char s[40] = {0};
 
@@ -33,12 +33,13 @@ int pr_int(va_list args, t_flag *fl)
 	y = x;
 	for (i = 0; x > 0; i++)
 		x /= 10;
+	j = i;
 	for (i -= 1; i >= 0; i--)
 	{
 		s[i] = (y % 10) + '0';
 		y /= 10;
 	}
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; i <= j; i++)
 	{
 		num += parse_char(s[i]);
 	}
