@@ -36,8 +36,9 @@ int pr_str(va_list args, t_flag *fl)
 		str = "(null)";
 	while (str[i] != '\0')
 	{
-		x += parse_char(str[i]);
+		parse_char(str[i]);
 		i++;
+		x++;
 	}
 	return (x);
 }
