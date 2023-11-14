@@ -26,18 +26,18 @@ int pr_char(va_list args, t_flag *fl)
 
 int pr_str(va_list args, t_flag *fl)
 {
-	int x;
+	int i, x;
 	char *str;
 	(void)fl;
 
-	x = 0;
+	i = x = 0;
 	str = va_arg(args, char *);
 	if (!str)
 		str = "(null)";
-	while (*str)
+	while (str[i])
 	{
-		x += parse_char(*str);
-		str++;
+		x += parse_char(str[i]);
+		i++;
 	}
 	return (x);
 }
