@@ -90,8 +90,8 @@ int _strlen(char *s)
 */
 int pr_binary(va_list args, t_flag *fl)
 {
-	unsigned int x = va_arg(args, unsigned int);
-	int i, index = 0;
+	long int x = va_arg(args, long int);
+	int i, count = 0, index = 0;
 	int binary[64];
 
 	(void)fl;
@@ -101,11 +101,13 @@ int pr_binary(va_list args, t_flag *fl)
 		parse_char('0');
 		return (1);
 	}
+	if (x < 0)
+		count += parse_char('1');
 	while (x > 0)
 	{	binary[index++] = x % 2;
 		x /= 2;
 	}
 	for (i = index - 1; i >= 0; i--)
-		parse_char(binary[i]);
-	return (index);
+		parse_char(binary[i] + '0');
+	return (count + index);
 }
