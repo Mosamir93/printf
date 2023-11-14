@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <limits.h>
 
 int parse_char(char c);
 

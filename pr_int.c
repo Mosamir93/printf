@@ -118,3 +118,28 @@ int pr_binary(va_list args, t_flag *fl)
 		parse_char(binary[i] + '0');
 	return (count + index);
 }
+
+/**
+ * pr_rot13 - encrypt a string using rot13
+ * @args: va_list to get the string from
+ * @fl: unused flag
+ * Return: number of characters parsed to buffer
+*/
+
+int pr_rot13(va_list args, t_flag *fl)
+{
+	int i, count = 0;
+	char *str = va_arg(args, char *);
+
+	(void)fl;
+	if (!str)
+		return (0);
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			count += parse_char(((str[i] - 'a' = 13) % 26) + 'a');
+		else if (str[i] >= 'A' && str[i] <= 'Z')
+			count += parse_char(((str[i] - 'A' + 13) % 26) + 'A');
+	}
+	return (count);
+}
