@@ -137,7 +137,7 @@ int pr_rot13(va_list args, t_flag *fl)
 		return (-1);
 	(void)fl;
 	if (!str)
-		return (0);
+		return (-1);
 	for (i = 0; str[i]; i++)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
