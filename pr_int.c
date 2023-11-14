@@ -54,7 +54,8 @@ int pr_int(va_list args, t_flag *fl)
 
 int pr_rev(va_list args, t_flag *fl)
 {
-	int i, num;
+	static int i;
+	int num;
 	char *s;
 
 	(void)fl;
