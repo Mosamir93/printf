@@ -11,7 +11,7 @@ int pr_int(va_list args, t_flag *fl)
 {
 	int i, j, num;
 	int x, y;
-	char s[20] = {0};
+	char s[18] = {0};
 
 	x = va_arg(args, long int);
 	num = 0;
