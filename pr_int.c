@@ -1,4 +1,5 @@
 #include "main.h"
+#include <limits.h>
 
 /**
  *pr_int - parses an int to buffer after changing it into characters
@@ -11,7 +12,7 @@ int pr_int(va_list args, t_flag *fl)
 {
 	int i, j, num;
 	int x, y;
-	char s[11] = {0};
+	char s[20] = {0};
 
 	x = va_arg(args, int);
 	num = 0;
