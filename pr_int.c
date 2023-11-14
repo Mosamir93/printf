@@ -137,7 +137,7 @@ int pr_rot13(va_list args, t_flag *fl)
 	for (i = 0; str[i]; i++)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
-			count += parse_char(((str[i] - 'a' = 13) % 26) + 'a');
+			count += parse_char(((str[i] - 'a' + 13) % 26) + 'a');
 		else if (str[i] >= 'A' && str[i] <= 'Z')
 			count += parse_char(((str[i] - 'A' + 13) % 26) + 'A');
 	}
