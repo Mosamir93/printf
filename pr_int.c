@@ -137,10 +137,10 @@ int pr_rot13(va_list args, t_flag *fl)
 
 	rot = malloc((_strlen(str) * sizeof(char)) + 1);
 	if (rot == NULL)
-		return (-1);
+		return (0);
 	(void)fl;
 	if (!str)
-		return (-1);
+		return (0);
 	for (i = 0; str[i]; i++)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
