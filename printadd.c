@@ -39,11 +39,12 @@ int pr_shex(va_list args, t_flag *fl)
  * @args: va_list to get the unsigned int from
  * @fl: flags structure
  * Return: number of characters printed
-*/
+ */
 int pr_uint(va_list args, t_flag *fl)
 {
 	int i, j, num;
 	unsigned int x, y;
+	char *s;
 
 	x = va_arg(args, unsigned int);
 	num = 0;
@@ -58,12 +59,14 @@ int pr_uint(va_list args, t_flag *fl)
 	if ((*fl).plus && x > 0)
 		num += parse_char('+');
 	y = x;
+
 	for (i = 0; x > 0; i++)
 		x /= 10;
 	j = i;
-	char s[i] = {0};
-
-	for (i -= 1; i >= 0; i--)
+	s = malloc(i * sizeof(char));
+	if (s == NULL)
+		return (-1);
+	for (--i; i >= 0; i--)
 	{
 		s[i] = (y % 10) + '0';
 		y /= 10;
@@ -73,6 +76,7 @@ int pr_uint(va_list args, t_flag *fl)
 		num++;
 		parse_char(s[i]);
 	}
+	free(s);
 	return (num);
 
 }
