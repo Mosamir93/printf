@@ -49,6 +49,7 @@ int pr_char(va_list args, t_flag *);
 int pr_str(va_list args, t_flag *);
 int pr_binary(va_list args, t_flag *fl);
 int pr_rot13(va_list args, t_flag *fl);
+int pr_shex(va_list args, t_flag *fl);
 int _printf(const char *format, ...);
 int (*get_spec(char p))(va_list, t_flag *);
 
