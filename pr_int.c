@@ -131,7 +131,7 @@ int pr_binary(va_list args, t_flag *fl)
 
 int pr_rot13(va_list args, t_flag *fl)
 {
-	int i, count = 0;
+	unsigned int i, count = 0;
 	char *str = va_arg(args, char *);
 
 	(void)fl;
