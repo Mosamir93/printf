@@ -86,7 +86,7 @@ int pr_uint(va_list args, t_flag *fl)
  * @args: va_list to get int from
  * @fl: flags struct
  * Return: number of characters parsed to buffer
-*/
+ */
 int pr_octal(va_list args, t_flag *fl)
 {
 	int i, j, num;
@@ -117,6 +117,102 @@ int pr_octal(va_list args, t_flag *fl)
 	{
 		s[i] = (y % 8) + '0';
 		y /= 8;
+	}
+	for (i = 0; i < j; i++)
+	{
+		num++;
+		parse_char(s[i]);
+	}
+	free(s);
+	return (num);
+}
+
+/**
+ * pr_chex - prints in hexadecimal form
+ * @args: va_list to get int from
+ * @fl: flags struct
+ * Return: number of characters parsed to buffer
+ */
+
+int pr_chex(va_list args, t_flag *fl)
+{
+	int i, j, num;
+	long int x, y;
+	char *s;
+
+	x = va_arg(args, long int);
+	num = 0;
+
+	if (x < 0)
+		x = -x;
+	if (x == 0)
+	{
+		num += parse_char('0');
+		return (num);
+	}
+	if ((*fl).hash)
+	{
+		num += parse_char('0');
+		num += parse_char('x');
+	}
+	y = x;
+	for (i = 0; x > 0; i++)
+		x /= 16;
+	j = i;
+	s = malloc(i * sizeof(char));
+	if (s == NULL)
+		return (0);
+	for (--i; i >= 0; i--)
+	{
+		s[i] = ((y % 16 < 10) ? ((y % 16) + '0') : ('A' + (y % 16) - 10));
+		y /= 16;
+	}
+	for (i = 0; i < j; i++)
+	{
+		num++;
+		parse_char(s[i]);
+	}
+	free(s);
+	return (num);
+}
+
+/**
+ * pr_hex - prints in hexadecimal form
+ * @args: va_list to get int from
+ * @fl: flags struct
+ * Return: number of characters parsed to buffer
+ */
+
+int pr_hex(va_list args, t_flag *fl)
+{
+	int i, j, num;
+	long int x, y;
+	char *s;
+
+	x = va_arg(args, long int);
+	num = 0;
+
+	if (x < 0)
+		x = -x;
+	if (x == 0)
+	{
+		num += parse_char('0');
+		return (num);
+	}
+	if ((*fl).hash)
+		num += parse_char('0');
+	y = x;
+
+	for (i = 0; x > 0; i++)
+		x /= 16;
+	j = i;
+	s = malloc(i * sizeof(char));
+	if (s == NULL)
+		return (0);
+	for (--i; i >= 0; i--)
+	{
+		s[i] = ((y % 16 < 10) ? ((y % 16) + '0') : ('a' + (y % 16) - 10));
+		y /= 16;
 	}
 	for (i = 0; i < j; i++)
 	{

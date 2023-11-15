@@ -52,6 +52,8 @@ int pr_rot13(va_list args, t_flag *fl);
 int pr_shex(va_list args, t_flag *fl);
 int pr_uint(va_list args, t_flag *fl);
 int pr_octal(va_list args, t_flag *fl);
+int pr_hex(va_list args, t_flag *fl);
+int pr_chex(va_list args, t_flag *fl);
 int _printf(const char *format, ...);
 int (*get_spec(char p))(va_list, t_flag *);
 

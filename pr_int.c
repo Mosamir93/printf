@@ -50,7 +50,6 @@ int pr_int(va_list args, t_flag *fl)
 	}
 	free(s);
 	return (num);
-
 }
 
 /**
