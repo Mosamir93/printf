@@ -62,7 +62,10 @@ int parse_char(char c)
 		i = 0;
 	}
 	else
+	{
 		buffer[i++] = c;
+		buffer[i] = '\0';
+	}
 	return (1);
 }
 
