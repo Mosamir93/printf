@@ -80,3 +80,49 @@ int pr_uint(va_list args, t_flag *fl)
 	return (num);
 
 }
+
+/**
+ * pr_octal - prints octal
+ * @args: va_list to get int from
+ * @fl: flags struct
+ * Return: number of characters parsed to buffer
+*/
+int pr_octal(va_list args, t_flag *fl)
+{
+	int i, j, num;
+	int x, y;
+	char *s;
+
+	x = va_arg(args, int);
+	num = 0;
+
+	if (x < 0)
+		x = -x;
+	if (x == 0)
+	{
+		num += parse_char('0');
+		return (num);
+	}
+	if ((*fl).hash)
+		num += parse_char('0');
+	y = x;
+
+	for (i = 0; x > 0; i++)
+		x /= 8;
+	j = i;
+	s = malloc(i * sizeof(char));
+	if (s == NULL)
+		return (0);
+	for (--i; i >= 0; i--)
+	{
+		s[i] = (y % 8) + '0';
+		y /= 8;
+	}
+	for (i = 0; i < j; i++)
+	{
+		num++;
+		parse_char(s[i]);
+	}
+	free(s);
+	return (num);
+}

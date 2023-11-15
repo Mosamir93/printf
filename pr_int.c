@@ -12,7 +12,7 @@ int pr_int(va_list args, t_flag *fl)
 {
 	int i, j, num;
 	int x, y;
-	char s[20] = {0};
+	char *s;
 
 	x = va_arg(args, int);
 	num = 0;
@@ -35,6 +35,9 @@ int pr_int(va_list args, t_flag *fl)
 	for (i = 0; x > 0; i++)
 		x /= 10;
 	j = i;
+	s = malloc(i * sizeof(char));
+	if (s == NULL)
+		return (0);
 	for (i -= 1; i >= 0; i--)
 	{
 		s[i] = (y % 10) + '0';
@@ -45,6 +48,7 @@ int pr_int(va_list args, t_flag *fl)
 		num++;
 		parse_char(s[i]);
 	}
+	free(s);
 	return (num);
 
 }
@@ -67,7 +71,7 @@ int pr_rev(va_list args, t_flag *fl)
 	str = va_arg(args, char *);
 	i = _strlen(str);
 
-	for (; i >= 0; i--)
+	for (i--; i >= 0; i--)
 		num += parse_char(str[i]);
 	return (num);
 }
