@@ -18,9 +18,10 @@ int (*get_spec(char p))(va_list, t_flag *)
 		{'r', pr_rev},
 		{'b', pr_binary},
 		{'R', pr_rot13},
-		{'S', pr_shex}
+		{'S', pr_shex},
+		{'u', pr_uint}
 	};
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < 9; i++)
 	{
 		if (specs[i].spec == p)
 			return (specs[i].get_fun);
