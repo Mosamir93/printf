@@ -135,7 +135,7 @@ int pr_rot13(va_list args, t_flag *fl)
 	char *str = va_arg(args, char *);
 	char *rot;
 
-	rot = malloc((_strlen(str) * sizeof(char)) + 1);
+	rot = malloc((_strlen(str) * sizeof(char)));
 	if (rot == NULL)
 		return (0);
 	(void)fl;
